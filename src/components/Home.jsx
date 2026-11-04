@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { TOPICS } from '../data/topics'
 import { isMastered } from '../lib/progress'
 
@@ -39,16 +40,7 @@ export default function Home({ progress, onOpen, onReset }) {
         })}
       </ul>
 
-      {mastered > 0 || Object.keys(progress).length > 0 ? (
-        <button
-          className="link-button"
-          onClick={() => {
-            if (confirm('Xoá toàn bộ tiến độ học?')) onReset()
-          }}
-        >
-          Học lại từ đầu
-        </button>
-      ) : null}
+      {Object.keys(progress).length > 0 && <ResetProgress onReset={onReset} />}
     </>
   )
 }
@@ -64,6 +56,34 @@ export function ProgressBar({ value, max }) {
       aria-valuemax={100}
     >
       <div className="progress-fill" style={{ width: `${pct}%` }} />
+    </div>
+  )
+}
+
+function ResetProgress({ onReset }) {
+  const [asking, setAsking] = useState(false)
+  if (!asking) {
+    return (
+      <button className="link-button" onClick={() => setAsking(true)}>
+        Học lại từ đầu
+      </button>
+    )
+  }
+  return (
+    <div className="confirm">
+      <span>Xoá toàn bộ tiến độ học?</span>
+      <button className="secondary" onClick={() => setAsking(false)}>
+        Huỷ
+      </button>
+      <button
+        className="danger"
+        onClick={() => {
+          onReset()
+          setAsking(false)
+        }}
+      >
+        Xoá tiến độ
+      </button>
     </div>
   )
 }
