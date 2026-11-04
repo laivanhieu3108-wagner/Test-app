@@ -5,7 +5,11 @@
   --muted: #6b7280;
   --border: #e3e5e8;
   --accent: #4f46e5;
+  --accent-soft: #eef0ff;
+  --success: #15803d;
+  --success-soft: #e8f7ee;
   --danger: #dc2626;
+  --danger-soft: #fdecec;
 
   color-scheme: light dark;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -21,7 +25,11 @@
     --muted: #9097a3;
     --border: #2c2f37;
     --accent: #818cf8;
+    --accent-soft: #23253a;
+    --success: #4ade80;
+    --success-soft: #16281e;
     --danger: #f87171;
+    --danger-soft: #2e1b1b;
   }
 }
 
